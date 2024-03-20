@@ -1,29 +1,48 @@
 <!DOCTYPE HTML>
 <html lang="fr">
-
+    
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Festivals du pays de la Loire</title>
     
-    <script src="scripts.js" ></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+        <!-- Make sure you put this AFTER Leaflet's CSS -->
+    
+
+    
+    <script src="scripts.js" defer></script>
    
 </head>
 
 <body>
     <h1>Festivals Pays de la Loire</h1> 
-    <table>
-        <tr>
-            <td></td>
-        </tr>
+    <div id="map" style="width: 640px; height: 180px;" leaflet.js></div>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin="">
+    </script>
 
 
-    </table>
     <ul></ul>
    
     <script>
-    festivalsPaysLoire()
+        window.onload = function(){
+            console.log("page chargée")
+            var map = L.map('map').setView([51.505, -0.09], 13);
+            var tileStreets = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        maxZoom: 19,
+                        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>', 
+                        accessToken :'pk.eyJ1IjoiaGFzc2VuLTg1IiwiYSI6ImNsdHlqdWJ1ODBneTIybXFmZWpjcXRwbzcifQ.dug0wSKr1c_VIULUT1dSgQ'
+
+                    })
+            tileStreets.addTo(map);
+        }
     </script>
 </body>
 
