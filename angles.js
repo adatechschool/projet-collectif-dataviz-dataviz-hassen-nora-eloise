@@ -1,6 +1,7 @@
 let angles = [49.09 ,63 ,85 ,54 ,42 ,16 ,86 ,76]
 let totalSum = 0
 let colors = ['#E63946', '#F1FAEE', '#A8DADC', '#457B9D', '#1D3557']
+
 function setup() {
   let canvas = createCanvas(400, 400)
   canvas.parent('pieChartContainer')
@@ -23,6 +24,7 @@ function draw() {
     lastAngle += angle
   }
 }
+
   function mousePressed() {
 // mouse click
   let newAngle = random(10, 90)
