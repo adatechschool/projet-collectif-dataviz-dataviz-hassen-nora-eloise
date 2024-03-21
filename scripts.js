@@ -51,49 +51,51 @@ function festivals(){
         }
 
     
-function map(){
-  window.onload = function(){
-      console.log("page chargée")
-      var map = L.map('map').setView([47.22105206554747,-1.5328920498252216], 13);
-      
-      //carte streets
-      var googleStreets = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      minZoom: 1,  
-      maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-        accessToken :'pk.eyJ1IjoiaGFzc2VuLTg1IiwiYSI6ImNsdHlqdWJ1ODBneTIybXFmZWpjcXRwbzcifQ.dug0wSKr1c_VIULUT1dSgQ'
-        })
-       
+  function map() {
+    window.onload = function () {
+        console.log("page chargée");
+        var map = L.map('map').setView([47.22105206554747, -1.5328920498252216], 13);
+
+        //carte streets
+        var googleStreets = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            minZoom: 1,
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            accessToken: 'pk.eyJ1IjoiaGFzc2VuLTg1IiwiYSI6ImNsdHlqdWJ1ODBneTIybXFmZWpjcXRwbzcifQ.dug0wSKr1c_VIULUT1dSgQ'
+        });
+
         //carte sattelite
-        var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
-        maxZoom: 20,
-        subdomains:['mt0','mt1','mt2','mt3']
+        var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+            maxZoom: 20,
+            subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
         });
-        
+
         //carte Terrain
-        googleTerrain = L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',{
-          maxZoom: 20,
-          subdomains:['mt0','mt1','mt2','mt3']
+        var googleTerrain = L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}', {
+            maxZoom: 20,
+            subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
         });
-        
+
         //carte de traffic
         var googleTraffic = L.tileLayer('https://{s}.google.com/vt/lyrs=m@221097413,traffic&x={x}&y={y}&z={z}', {
-        maxZoom: 20,
-        minZoom: 2,
-        subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
-         });
-         googleTraffic.addTo(map);
+            maxZoom: 20,
+            minZoom: 2,
+            subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+        });
+
+        googleStreets.addTo(map);
         L.control.layers({
-          streets:"googleStreets", 
-          Sattelites: "googleSat", 
-          terrain: "googleTerrain", 
-          traffic: "googleTraffic"
-        }); 
-//les marker
-      L.marker([47.220,-1.530]).addTo(map)
-        .bindPopup("Ada Tech School");
-      //onMapClick(e)
-  }
+            'Satellites': googleSat,
+            'Terrain': googleTerrain,
+            'Traffic': googleTraffic
+        }).addTo(map);
+
+        //les markers
+        let stationLat = 47.220;
+        let stationLng = -1.530;
+        var stationMarker = L.marker([stationLat, stationLng]).addTo(map)
+            .bindPopup("Ada Tech School");
+    }
 }
 
 list=[163,73,44,25,16,11]
