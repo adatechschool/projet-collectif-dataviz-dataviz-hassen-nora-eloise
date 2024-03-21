@@ -9,30 +9,34 @@
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
      crossorigin=""/>
         <!-- Make sure you put this AFTER Leaflet's CSS -->
-    
-
-    
-    <script src="scripts.js" ></script>
-   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="scripts.js"></script>
+    <script src="angles.js"></script>
 </head>
 <body>
     <h1>Festivals Pays de la Loire</h1>
-    <div id="map" style="width: 60%; height: 500px;" leaflet.js></div>
+    <div id="map" style="width: 60%; height: 500px; border: none; border-radius: 20px;" leaflet.js></div>
+    <h2>Pie Chart:</h2>
+    <div id="pieChartContainer"></div>
+<!--     <div class="pie-container">
+        <button class="pie-slice slice-1" onclick="handleSliceClick(1)"></button>
+        <button class="pie-slice slice-2" onclick="handleSliceClick(2)"></button>
+        <button class="pie-slice slice-3" onclick="handleSliceClick(3)"></button>
+        <button class="pie-slice slice-4" onclick="handleSliceClick(4)"></button>
+        <button class="pie-slice slice-5" onclick="handleSliceClick(5)"></button>
+      </div>
+ -->
     <!-- Make sure you put this AFTER Leaflet's CSS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
         crossorigin="">
     </script>
-
-
-    <ul></ul>
-   
-    <script>
-        //festivalsPaysLoire()
-        festivalsMusiqueLoireAtlantique()
-        //anglesCamembert(332,list)
-        //map()
-    </script>
+<ul></ul>
+<script>
+    festivalsPaysLoire()
+    map()
+    setup()
+    draw()
+</script>
 </body>
-
 </html>

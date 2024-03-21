@@ -1,0 +1,31 @@
+/* map{
+    width: 60%;
+    height: 500px;
+    border: none;
+    border-radius: 20px;
+} */
+canvas {
+    display: block;
+    margin: auto;
+    border: 1px solid #ccc;
+  }
+.pie-container {
+position: relative;
+width: 400px;
+height: 400px;
+border-radius: 50%;
+overflow: hidden;
+}
+.pie-slice {
+position: absolute;
+width: 50%;
+height: 100%;
+clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+transform-origin: 100% 50%;
+cursor: pointer;
+}
+/* .slice-1 { background-color: #E63946; }
+.slice-2 { background-color: #F1FAEE; }
+.slice-3 { background-color: #A8DADC; }
+.slice-4 { background-color: #457B9D; }
+.slice-5 { background-color: #1D3557; } */
