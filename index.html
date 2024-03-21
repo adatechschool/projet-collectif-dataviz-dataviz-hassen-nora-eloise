@@ -14,7 +14,7 @@
     
 
     
-    <script src="scripts.js" defer></script>
+    <script src="scripts.js" ></script>
    
 </head>
 
@@ -32,17 +32,10 @@
     <ul></ul>
    
     <script>
-        window.onload = function(){
-            console.log("page chargée")
-            var map = L.map('map').setView([51.505, -0.09], 13);
-            var tileStreets = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                        maxZoom: 19,
-                        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>', 
-                        accessToken :'pk.eyJ1IjoiaGFzc2VuLTg1IiwiYSI6ImNsdHlqdWJ1ODBneTIybXFmZWpjcXRwbzcifQ.dug0wSKr1c_VIULUT1dSgQ'
-
-                    })
-            tileStreets.addTo(map);
-        }
+        //festivalsPaysLoire()
+        festivalsMusiqueLoireAtlantique()
+        //anglesCamembert(332,list)
+        //map()
     </script>
 </body>
 
