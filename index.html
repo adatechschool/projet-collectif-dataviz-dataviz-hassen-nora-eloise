@@ -10,16 +10,14 @@
      crossorigin=""/>
         <!-- Make sure you put this AFTER Leaflet's CSS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-
+    <link rel="stylesheet" href="main.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <script src="scripts.js"></script>
     <script src="angles.js"></script>
-    <link rel="stylesheet" href="main.css">
 </head>
 <body>
-
     <h1>Festivals Pays de la Loire</h1>
-    <div id="map" leaflet.js></div>
+    <div id="map"  leaflet.js></div>
     <h2>Pie Chart:</h2>
     <div id="pieChartContainer"></div>
 <!--     <div class="pie-container">
@@ -39,11 +37,12 @@
     </script>
 <ul></ul>
 <script>
-    festivalsPaysLoire()
-    carte()
-  
-    
-    
+    festivals()
+    //festivalsPaysLoire(); 
+    //affichagePopMap()
+    map()
+    setup()
+    draw()
 </script>
     
 </body>
