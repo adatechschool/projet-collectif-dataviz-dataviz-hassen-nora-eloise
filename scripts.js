@@ -52,8 +52,8 @@ function festivalsPaysLoire(){
               return tailleList // nombre de festival de musique du pays de la loire
               });
               
-            })
-          }
+            }
+          
     
           
   function map(){

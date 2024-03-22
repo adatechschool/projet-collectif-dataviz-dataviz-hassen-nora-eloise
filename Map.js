@@ -1,4 +1,4 @@
-function creatMap() {
+function createMap() {
     window.onload = function () {
         console.log("page chargée");
         var map = L.map('map').setView([47.22105206554747, -1.5328920498252216], 13);
