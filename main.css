@@ -5,11 +5,6 @@
   border-radius: 20px;
   text-align:center;
 }
-html, body{
-  background-color: black;
-  color: white
-}
-
 
 canvas {
   display: block;
