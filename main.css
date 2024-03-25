@@ -3,7 +3,12 @@
   height: 500px;
   border: none;
   border-radius: 20px;
-  text-align: center;
+  margin: 0 auto;
+}
+html, body{
+  background-color: black;
+  color: white; 
+
 }
 
 canvas {
