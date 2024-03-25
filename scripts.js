@@ -143,27 +143,27 @@ function createMap() {
 
     //carte streets
     let googleStreets = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      minZoom: 1,
+      maxZoom: 8,
       maxZoom: 8,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     });
 
     //carte sattelite
     let googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
-      maxZoom: 8,
+      maxZoom: 20,
       subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
     });
 
     //carte Terrain
     let googleTerrain = L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}', {
-      maxZoom: 8,
+      maxZoom: 20,
       subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
     });
 
     //carte de traffic
     let googleTraffic = L.tileLayer('https://{s}.google.com/vt/lyrs=m@221097413,traffic&x={x}&y={y}&z={z}', {
       maxZoom: 20,
-      minZoom: 2,
+
       subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
     });
 
