@@ -144,19 +144,19 @@ function createMap() {
     //carte streets
     let googleStreets = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
       minZoom: 1,
-      maxZoom: 19,
+      maxZoom: 8,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     });
 
     //carte sattelite
     let googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
-      maxZoom: 20,
+      maxZoom: 8,
       subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
     });
 
     //carte Terrain
     let googleTerrain = L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}', {
-      maxZoom: 20,
+      maxZoom: 8,
       subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
     });
 
@@ -254,7 +254,6 @@ function markersData(map) {
         let result = data.results[i];
         festivalWebSites.push(result.site_internet_du_festival)
       }
-      console.log("site web", festivalWebSites)
       markers(map, festivalLat, festivalLng, festivalNames, festivalCategory, festivalWebSites)
     });
 }
