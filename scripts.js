@@ -139,12 +139,11 @@ function festivals() {
 function createMap() {
   window.onload = function () {
 
-    let map = L.map('map').setView([47.22105206554747, -1.5328920498252216], 13);
+    let map = L.map('map').setView([47.22105206554747, -1.5328920498252216], 8);
 
     //carte streets
     let googleStreets = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 8,
-      maxZoom: 8,
+      maxZoom: 20,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     });
 
@@ -176,10 +175,12 @@ function createMap() {
     googleStreets.addTo(map);
 
     L.control.layers({
+      "Streets":googleStreets,  
       "Satellites": googleSat,
       "Terrain": googleTerrain,
       "Traffic": googleTraffic,
-      "Transport": googleTransport
+      "Transport": googleTransport, 
+      
     }).addTo(map);
 
     markersData(map)
@@ -189,22 +190,82 @@ function createMap() {
 }
 
 function markers(map, festivalLat, festivalLng, festivalNames, festivalCategory, festivalWebSites) {
-  // Ajouter un marqueur avec popup de heavy metal
-  let customIcon = L.icon({
-    iconUrl: "guitare-electrique-pour-heavy-metal.png",
-    iconSize: [30, 30],           // Taille de l'icône en pixels
-    iconAnchor: [15, 30],         // Point d'ancrage de l'icône, normalement la moitié de sa taille
-    popupAnchor: [0, -30]         // Point d'ancrage de la popup par rapport à l'icône
+  // Définir les icônes pour chaque catégorie
+  let iconMusic = L.icon({
+    iconUrl: "music-band.png",
+    iconSize: [30, 30],
+    iconAnchor: [15, 30],
+    popupAnchor: [0, -30]
   });
-  //L.marker([47.09675,-1.26776], { icon: customIcon }).addTo(map).bindPopup(festivalNames);
-  for (let i = 0; i < festivalLat.length; i++) {
-    L.marker([festivalLat[i], festivalLng[i]], { icon: customIcon }).addTo(map)
-    .bindPopup(
-      "<b>Nom :</b> " + festivalNames[i] + "<br>" + // Utilisation de <b> pour du texte en gras
-      "<b>Catégorie :</b> " + festivalCategory[i] + "<br>" + // Utilisation de <b> pour du texte en gras
-      "<b>Site Web :</b> <a href='" + festivalWebSites[i] + "' target='_blank'>" + festivalWebSites[i] + "</a>" // Création d'un lien avec une balise <a>
-    );
-  }
+
+  let iconSpectacle = L.icon({
+    iconUrl: "theatre.png",
+    iconSize: [30, 30],
+    iconAnchor: [15, 30],
+    popupAnchor: [0, -30]
+  });
+
+  let iconLiterature = L.icon({
+    iconUrl: "livre-ouvert.png",
+    iconSize: [30, 30],
+    iconAnchor: [15, 30],
+    popupAnchor: [0, -30]
+  });
+
+  let iconDigitalArts = L.icon({
+    iconUrl: "dessin-numerique.png",
+    iconSize: [30, 30],
+    iconAnchor: [15, 30],
+    popupAnchor: [0, -30]
+  });
+
+  let iconAudioVisual = L.icon({
+    iconUrl: "television.png",
+    iconSize: [30, 30],
+    iconAnchor: [15, 30],
+    popupAnchor: [0, -30]
+  });
+
+  // Boucle pour créer les marqueurs en fonction de la catégorie
+  for (let i = 0; i < festivalCategory.length; i++) {
+    let icon;
+    // Sélectionner l'icône en fonction de la catégorie
+    switch (festivalCategory[i]) {
+      case "Musique":
+        icon = iconMusic;
+        break;
+      case "Spectacle vivant":
+        icon = iconSpectacle;
+        break;
+      case "Livre, littérature":
+        icon = iconLiterature;
+        break;
+      case "Arts numériques":
+        icon = iconDigitalArts;
+        break;
+      case "Audiovisuel":
+        icon = iconAudioVisual;
+        break;
+      default:
+        icon = iconMusic; // Par défaut, utilisez l'icône de musique
+        break;
+    }
+    // Ajouter le marqueur avec l'icône correspondante
+    L.marker([festivalLat[i], festivalLng[i]], { icon: icon }).addTo(map)
+      .bindPopup(
+        "<b>Nom :</b> " + festivalNames[i] + "<br>" +
+        "<b>Catégorie :</b> " + festivalCategory[i] + "<br>" +
+        "<b>Site Web :</b> <a href='" + festivalWebSites[i] + "' target='_blank'>" + festivalWebSites[i] + "</a>"
+      );
+  // //L.marker([47.09675,-1.26776], { icon: customIcon }).addTo(map).bindPopup(festivalNames);
+  // for (let i = 0; i < festivalLat.length; i++) {
+  //   L.marker([festivalLat[i], festivalLng[i]], { icon: iconMusic }).addTo(map)
+  //   .bindPopup(
+  //     "<b>Nom :</b> " + festivalNames[i] + "<br>" + // Utilisation de <b> pour du texte en gras
+  //     "<b>Catégorie :</b> " + festivalCategory[i] + "<br>" + // Utilisation de <b> pour du texte en gras
+  //     "<b>Site Web :</b> <a href='" + festivalWebSites[i] + "' target='_blank'>" + festivalWebSites[i] + "</a>" // Création d'un lien avec une balise <a>
+  //   );
+   }
 }
 function markersData(map) {
 
@@ -214,16 +275,6 @@ function markersData(map) {
   let festivalLng = [];
   let festivalCategory = [];
   let festivalWebSites = [];
-
-  //  //objet pour stoccker le donées de la dataFestivals 
-  //           let dataFestivals = {
-  //               nom: result.nom_du_festival,
-  //               
-  //                   lat: result.geocodage_xy.lat,
-  //                   lon: result.geocodage_xy.lon, 
-  //                   catégorie: result, 
-  //                   mailfestivalWebSites 
-  //     };
 
   // récup API festivals Pays de la Loire, transformation des réponses en JSON et récupération des données dans des tableaux vides
   fetch("https://data.culture.gouv.fr/api/explore/v2.1/catalog/datasets/festivals-global-festivals-_-pl/records?limit=-1&refine=region_principale_de_deroulement%3A%22Pays%20de%20la%20Loire%22")
