@@ -175,7 +175,7 @@ function createMap() {
     googleStreets.addTo(map);
 
     L.control.layers({
-      "Streets":googleStreets,  
+      "Streets": googleStreets,
       "Satellites": googleSat,
       "Terrain": googleTerrain,
       "Traffic": googleTraffic,
@@ -277,32 +277,38 @@ function markersData(map) {
   let festivalWebSites = [];
 
   // récup API festivals Pays de la Loire, transformation des réponses en JSON et récupération des données dans des tableaux vides
-  fetch("https://data.culture.gouv.fr/api/explore/v2.1/catalog/datasets/festivals-global-festivals-_-pl/records?limit=-1&refine=region_principale_de_deroulement%3A%22Pays%20de%20la%20Loire%22")
-    .then((resp) => resp.json())
-    .then(data => {
-      // boucles pour récupérer les coordonnées et noms des festivals + push des données dans les tableaux festivalsNames geocodageData  festivalLng festivalLat
-      for (let i = 0; i < data.results.length; i++) {
-        festivalNames.push(data.results[i].nom_du_festival);
-      }
+  // fetch("https://data.culture.gouv.fr/api/explore/v2.1/catalog/datasets/festivals-global-festivals-_-pl/records?limit=-1&refine=region_principale_de_deroulement%3A%22Pays%20de%20la%20Loire%22")
+  //   .then((resp) => resp.json())
+  //   .then(data => {
+    fetch("https://data.culture.gouv.fr/api/explore/v2.1/catalog/datasets/festivals-global-festivals-_-pl/exports/json").then((response) => {
+    return response.json()
+  }).then((data)=> { //festivals contient 7283 objets festival
+    let festFilter = data.filter(isPaysdeLaLoire)
+   
 
-      for (let i = 0; i < data.results.length; i++) {
-        let result = data.results[i];
+    // boucles pour récupérer les coordonnées et noms des festivals + push des données dans les tableaux festivalsNames geocodageData  festivalLng festivalLat
+      for (let i = 0; i < festFilter.length; i++) {
+        let result = festFilter[i];
+        festivalNames.push(result.nom_du_festival);
+      }   
+      for (let i = 0; i < festFilter.length; i++) {
+        let result = festFilter[i];
         geocodageData.push(result.geocodage_xy);
       }
 
-      for (let i = 0; i < data.results.length; i++) {
-        let result = data.results[i];
+      for (let i = 0; i < festFilter.length; i++) {
+        let result = festFilter[i];
         festivalLat.push(result.geocodage_xy.lat);
         festivalLng.push(result.geocodage_xy.lon);
       }
 
-      for (let i = 0; i < data.results.length; i++) {
-        let result = data.results[i];
+      for (let i = 0; i < festFilter.length; i++) {
+        let result = festFilter[i];
         festivalCategory.push(result.discipline_dominante)
 
       }
-      for (let i = 0; i < data.results.length; i++) {
-        let result = data.results[i];
+      for (let i = 0; i < festFilter.length; i++) {
+        let result = festFilter[i];
         festivalWebSites.push(result.site_internet_du_festival)
       }
       markers(map, festivalLat, festivalLng, festivalNames, festivalCategory, festivalWebSites)
