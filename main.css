@@ -28,11 +28,13 @@
   }
 
   nav-links{
+    color: #fff;
     flex:1;
     text-align: right;
   }
 
   .nav-links ul li {
+    color: #fff;
     list-style: none;
     display:inline-block;
     padding: 8px 12px;
@@ -53,9 +55,11 @@
     display: block;
     margin: auto;
     transition: 0.5s;
+    color: #fff;
   }
  
   .nav-links ul li:hover::after{
+    color: #fff;
      width:100%;
    }
 
