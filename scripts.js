@@ -160,35 +160,35 @@ function createMap() {
 function markers(map, festivalLat, festivalLng, festivalNames, festivalCategory, festivalWebSites) {
   // Définir les icônes pour chaque catégorie
   let iconMusic = L.icon({
-    iconUrl: "music-band.png",
+    iconUrl: "img/music-band.png",
     iconSize: [30, 30],
     iconAnchor: [15, 30],
     popupAnchor: [0, -30]
   });
 
   let iconSpectacle = L.icon({
-    iconUrl: "theatre.png",
+    iconUrl: "img/theatre.png",
     iconSize: [30, 30],
     iconAnchor: [15, 30],
     popupAnchor: [0, -30]
   });
 
   let iconLiterature = L.icon({
-    iconUrl: "livre-ouvert.png",
+    iconUrl: "img/livre-ouvert.png",
     iconSize: [30, 30],
     iconAnchor: [15, 30],
     popupAnchor: [0, -30]
   });
 
   let iconDigitalArts = L.icon({
-    iconUrl: "dessin-numerique.png",
+    iconUrl: "img/dessin-numerique.png",
     iconSize: [30, 30],
     iconAnchor: [15, 30],
     popupAnchor: [0, -30]
   });
 
   let iconAudioVisual = L.icon({
-    iconUrl: "television.png",
+    iconUrl: "png/television.png",
     iconSize: [30, 30],
     iconAnchor: [15, 30],
     popupAnchor: [0, -30]
