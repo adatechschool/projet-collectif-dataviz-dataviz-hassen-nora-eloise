@@ -89,34 +89,6 @@ function isDisciplineDominante(list) {
 
 }
 
-/* function affichagePopMap() {
-  listObjet = []
-  fetch("https://data.culture.gouv.fr/api/explore/v2.1/catalog/datasets/festivals-global-festivals-_-pl/exports/json").then((response) => {
-    return response.json()
-  }).then((festivals) => {
-    festFilter = festivals.filter(isPaysdeLaLoire) // contient 332 objets festival en pays de la loire
-
-  })
-  //console.log(listObjet)
-  return listObjet
-} 
-  let trElement = document.querySelector("tr")
-  let tr2Element2 = document.createElement("tr")
-  fetch("https://data.culture.gouv.fr/api/explore/v2.1/catalog/datasets/festivals-global-festivals-_-pl/records?limit=100&refine=departement_principal_de_deroulement%3ALoire-Atlantique&refine=region_principale_de_deroulement%3A%22Pays%20de%20la%20Loire%22").then((response) => {
-    return response.json()
-  }).then((festivals) => {
-    console.log(festivals)
-    for (let festival of festivals.results) {
-      let thElement = document.createElement("li")
-
-      thElement.innerText = festival.nom_du_festival
-      liElement2.innerText = festival.
-        trElement.appendChild(liElement)
-      trElement.appendChild(liElement2)
-    }
-  })
-*/
-
 function festivals() {
   tailleList = []
   let ulElement = document.querySelector("dd")
@@ -199,35 +171,35 @@ function createMap() {
 function markers(map, festivalLat, festivalLng, festivalNames, festivalCategory, festivalWebSites) {
   // Définir les icônes pour chaque catégorie
   let iconMusic = L.icon({
-    iconUrl: "music-band.png",
+    iconUrl: "img/music-band.png",
     iconSize: [30, 30],
     iconAnchor: [15, 30],
     popupAnchor: [0, -30]
   });
 
   let iconSpectacle = L.icon({
-    iconUrl: "theatre.png",
+    iconUrl: "img/theatre.png",
     iconSize: [30, 30],
     iconAnchor: [15, 30],
     popupAnchor: [0, -30]
   });
 
   let iconLiterature = L.icon({
-    iconUrl: "livre-ouvert.png",
+    iconUrl: "img/livre-ouvert.png",
     iconSize: [30, 30],
     iconAnchor: [15, 30],
     popupAnchor: [0, -30]
   });
 
   let iconDigitalArts = L.icon({
-    iconUrl: "dessin-numerique.png",
+    iconUrl: "img/dessin-numerique.png",
     iconSize: [30, 30],
     iconAnchor: [15, 30],
     popupAnchor: [0, -30]
   });
 
   let iconAudioVisual = L.icon({
-    iconUrl: "television.png",
+    iconUrl: "png/television.png",
     iconSize: [30, 30],
     iconAnchor: [15, 30],
     popupAnchor: [0, -30]
