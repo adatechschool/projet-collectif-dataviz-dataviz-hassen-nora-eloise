@@ -15,6 +15,12 @@
     <link rel="stylesheet" href="main.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,500;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin="">
+
+        </script>
   </head>
 <body>
   <section class="header">
@@ -40,32 +46,28 @@
   </section>
   <section class="typesOfFestivals">
      <h1>Types De Festivals</h1>
-     <p style="text-align: center; color:white">Voici Les Cinq Diffrents Types Des Festivals </p>
+     <p style="text-align: center; color:white">Voici Les six Diffrents Types Des Festivals </p>
      <div class="row">
   <h3> Festival De Musique</h3>
   <h3> Festival De Culture</h3>
   <h3> Festival De livre littérature</h3>
   <h3> Festival De Cinéma Audiovisuel</h3>
   <h3> Festival De Pluridisciplinaire</h3>
-  <h3> Festival De Art Visuel, Art Numérique</h3>
+  <h3> Festival D'Art Visuel, Art Numérique</h3>
     </div>
     </section>
     <br>
     <br>
     <div style = "text-align: center; align-items: center;">
       <h1>Festivals Pays de la Loire</h1>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
     <br>
     <br>
     <div id="map" leaflet.js></div>
     <br>
     <br>
-    <canvas id="myDoughnutChart" style="width: 30%; height: 300 px;"></canvas>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-        crossorigin="">
-
-        </script>
+    <canvas id="myDoughnutChart"></canvas>
+    
     <ul></ul>
     <script>
         festivalsParCatégories()

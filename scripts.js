@@ -35,16 +35,13 @@ function festivalsParCatégories() {
     return response.json()
   }).then((festivals) => { //festivals contient 7283 objets festival
     festFilter = festivals.filter(isPaysdeLaLoire) // contient 332 objets festival en pays de la loire
-    let listbytheme = isDisciplineDominante(festFilter)
+    let listbytheme = isDisciplineDominante(festFilter) // liste des festivals par types {[discipline, list],}
     //console.log(listbytheme)
     let list=[]
     for([key, value] of Object.entries(listbytheme)){
       let obj={}
       obj[key]= value.length
-      list.push( obj)
-    
-    
-    
+      list.push( obj) // liste des disciplines avec le nombre de festivals correspondant 
   }
   //console.log(list)
 DoughnutChart(list)// appel du piechart
@@ -64,13 +61,13 @@ function isPaysdeLaLoire(list) {
   return list.region_principale_de_deroulement === "Pays de la Loire"
 }
 
-function isMusic(list) {
+/* function isMusic(list) {
   return list.discipline_dominante === "Musique"
 }
 function isLivres(list) {
   return list.discipline_dominante === "Livre, littérature"
 }
-
+ */
 function isDisciplineDominante(list) {
   let listGroupDiscipline = Object.groupBy(list, ({ discipline_dominante }) => discipline_dominante);
   //console.log(listGroupDiscipline)
@@ -266,7 +263,12 @@ function markersData(map) {
       }
       for (let i = 0; i < festFilter.length; i++) {
         let result = festFilter[i];
-        festivalWebSites.push(result.site_internet_du_festival)
+        
+        if (result == null){
+          festivalWebSites.push("Pas de site web connu")
+        }else{
+          festivalWebSites.push(result.site_internet_du_festival)
+        }
       }
       markers(map, festivalLat, festivalLng, festivalNames, festivalCategory, festivalWebSites)
     });

@@ -204,7 +204,10 @@
       border-radius: 20px;
       margin: auto;
   }
-
+  #myDoughnutChart{ 
+    width: 50%; 
+    height: 300 px;
+}
 
 
   
