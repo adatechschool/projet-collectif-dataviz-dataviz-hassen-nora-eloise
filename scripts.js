@@ -3,7 +3,7 @@ function festivalsPaysLoire() {
   fetch("https://data.culture.gouv.fr/api/explore/v2.1/catalog/datasets/festivals-global-festivals-_-pl/exports/json").then((response) => {
     return response.json()
   }).then((festivals) => {
-    console.log(festivals)
+    //console.log(festivals)
     for (let festival of festivals.results) {
       let liElement = document.createElement("li")
       liElement.innerText = festival.nom_du_festival
@@ -40,7 +40,7 @@ function festivalsParCatégories() {
     festFilter = festivals.filter(isPaysdeLaLoire) // contient 332 objets festival en pays de la loire
     //musicFilter=festFilter.filter(isMusic) // 163 festival de musique du pays de la loire
     let listbytheme = isDisciplineDominante(festFilter)
-    console.log(listbytheme)
+    //console.log(listbytheme)
     //tailleList=musicFilter.length //taille de la liste des festival de musique du pays de la loire
     /* for (let festival of {listbytheme}){ //affiche chacun d'eux avec 
      const liElement=document.createElement("li")
@@ -49,10 +49,17 @@ function festivalsParCatégories() {
      ulElement.appendChild(liElement) //affiche chaque ligne entre les balises ul de la page index
   } */
     //console.log(listbytheme)
-    return listbytheme // nombre de festival de musique du pays de la loire
+    let list=[]
+    for([key, value] of Object.entries(listbytheme)){
+      list.push( `${key}: ${value.length}`)
+    }
+    console.log(list)
+    return list // nombre de festival de musique du pays de la loire
   })
 
 }
+
+
 
 list = [163, 73, 44, 25, 16, 11]
 function anglesCamembert(total, valeurs) {
@@ -254,7 +261,7 @@ function markersData(map) {
         let result = data.results[i];
         festivalWebSites.push(result.site_internet_du_festival)
       }
-      console.log("site web", festivalWebSites)
+      //console.log("site web", festivalWebSites)
       markers(map, festivalLat, festivalLng, festivalNames, festivalCategory, festivalWebSites)
     });
 }

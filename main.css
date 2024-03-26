@@ -3,7 +3,13 @@
   height: 500px;
   border: none;
   border-radius: 20px;
-  text-align: center;
+  margin-left: auto;
+  margin-right: auto
+}
+
+html, body {
+  background-color: black;
+  color: white;
 }
 
 canvas {
@@ -28,9 +34,3 @@ canvas {
   transform-origin: 100% 50%;
   cursor: pointer;
 }
-
-/* .slice-1 { background-color: #E63946; }
-.slice-2 { background-color: #F1FAEE; }
-.slice-3 { background-color: #A8DADC; }
-.slice-4 { background-color: #457B9D; }
-.slice-5 { background-color: #1D3557; } */
