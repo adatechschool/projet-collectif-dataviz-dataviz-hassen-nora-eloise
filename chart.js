@@ -5,7 +5,7 @@
   let  myDoughnutChart = new Chart(ctx, {
       type: 'doughnut',
       data: {
-          labels: ['Festival de Culture', 'Festival de Music', 'Festival d\ Art', 'Autre Festival', 'Festival de Cinéma'],
+          labels: ['Festival de Culture', 'Festival de Musique', 'Festival d\ Art', 'Autre Festival', 'Festival de Cinéma'],
           datasets: [{
               label: 'Les Festivals Pays de Loire',
               data: [31,25,25,12,6],
@@ -23,7 +23,9 @@
                  '#39FF14',
                  '#CC00FF',
               ],
-              borderWidth: 1
+              borderWidth: 1,
+            
+             
           }]
       }
   })}
