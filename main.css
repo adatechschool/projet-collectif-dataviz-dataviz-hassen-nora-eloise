@@ -201,7 +201,8 @@
       height: 500px;
       border: none;
       border-radius: 20px;
-      text-align:center;
+      margin-left: auto;
+      margin-right: auto;
   }
 
  
