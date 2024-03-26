@@ -131,29 +131,17 @@ function createMap() {
       subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
     });
 
-    let googleTransport = L.tileLayer('http://{s}.tile.thunderforest.com/transport/{z}/{x}/{y}.png', {
-      maxZoom: 18,
-      subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
-    })
-
     // Ajouter les couches de tuiles à la carte
     googleStreets.addTo(map);
-
     L.control.layers({
       "Streets": googleStreets,
       "Satellites": googleSat,
       "Terrain": googleTerrain,
       "Traffic": googleTraffic,
-      "Transport": googleTransport, 
-      
     }).addTo(map);
-
     markersData(map)
-
   }
-
 }
-
 function markers(map, festivalLat, festivalLng, festivalNames, festivalCategory, festivalWebSites) {
   // Définir les icônes pour chaque catégorie
   let iconMusic = L.icon({
@@ -185,12 +173,23 @@ function markers(map, festivalLat, festivalLng, festivalNames, festivalCategory,
   });
 
   let iconAudioVisual = L.icon({
-    iconUrl: "png/television.png",
+    iconUrl: "img/television.png",
     iconSize: [30, 30],
     iconAnchor: [15, 30],
     popupAnchor: [0, -30]
   });
-
+  let iconPluridisciplinaire = L.icon({
+    iconUrl: "img/tente-evenementielle.png",
+    iconSize: [30, 30],
+    iconAnchor: [15, 30],
+    popupAnchor: [0, -30]
+  });
+  let defaultIcon = L.icon({
+    iconUrl: "img/espace-reserve.png",
+    iconSize: [30, 30],
+    iconAnchor: [15, 30],
+    popupAnchor: [0, -30]
+  });
   // Boucle pour créer les marqueurs en fonction de la catégorie
   for (let i = 0; i < festivalCategory.length; i++) {
     let icon;
@@ -205,16 +204,19 @@ function markers(map, festivalLat, festivalLng, festivalNames, festivalCategory,
       case "Livre, littérature":
         icon = iconLiterature;
         break;
-      case "Arts numériques":
+      case "Arts visuels, arts numériques":
         icon = iconDigitalArts;
         break;
-      case "Audiovisuel":
+      case "Cinéma, audiovisuel":
         icon = iconAudioVisual;
         break;
-      default:
-        icon = iconMusic; // Par défaut, utilisez l'icône de musique
+      case "Pluridisciplinaire":
+        icon = iconPluridisciplinaire ;
         break;
-    }
+      default:
+          icon = defaultIcon;
+        break;
+      }
     // Ajouter le marqueur avec l'icône correspondante
     L.marker([festivalLat[i], festivalLng[i]], { icon: icon }).addTo(map)
       .bindPopup(
@@ -233,8 +235,7 @@ function markersData(map) {
   let festivalCategory = [];
   let festivalWebSites = [];
 
-  
-    fetch("https://data.culture.gouv.fr/api/explore/v2.1/catalog/datasets/festivals-global-festivals-_-pl/exports/json").then((response) => {
+  fetch("https://data.culture.gouv.fr/api/explore/v2.1/catalog/datasets/festivals-global-festivals-_-pl/exports/json").then((response) => {
     return response.json()
   }).then((data)=> { //festivals contient 7283 objets festival
     let festFilter = data.filter(isPaysdeLaLoire) //festFilter contient 332 objets festival dans le pays de la loire
