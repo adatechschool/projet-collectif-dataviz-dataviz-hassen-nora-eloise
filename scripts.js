@@ -29,7 +29,6 @@ function festivalsLoireAtlantique() {
     }
   })
 }
-
 function festivalsParCatégories() {
   fetch("https://data.culture.gouv.fr/api/explore/v2.1/catalog/datasets/festivals-global-festivals-_-pl/exports/json").then((response) => {
     return response.json()
@@ -47,6 +46,39 @@ function festivalsParCatégories() {
 DoughnutChart(list)// appel du piechart
   })
 }
+function festivalsListParCategories() {
+  fetch("https://data.culture.gouv.fr/api/explore/v2.1/catalog/datasets/festivals-global-festivals-_-pl/exports/json").then((response) => {
+    return response.json()
+  }).then((festivals) => { //festivals contient 7283 objets festival
+    festFilter = festivals.filter(isPaysdeLaLoire) // contient 332 objets festival en pays de la loire
+    let listbytheme = isDisciplineDominante(festFilter) // liste des festivals par types {[discipline, list],}
+    //console.log(listbytheme)
+  //console.log(listbytheme)
+  let list=[]
+    for([key, value] of Object.entries(festFilter)){
+      let obj={}
+      obj[key]= value
+      list.push( obj) // liste des disciplines avec le nombre de festivals correspondant 
+  }
+  //console.log(list)
+  affichageLists(list) 
+  })
+}
+/* function affichageLists(list) {
+  let listvalue=[]
+  let ulElement = document.querySelector("dd")
+  for(value of list){
+    listvalue.push(Object.values(value).join()) // liste 
+    //liElement.innerText += " || " + festival.discipline_dominante
+  }
+  console.log(`${listvalue}`)
+  let liElement = document.createElement("li")
+    liElement.innerText = listvalue.nom_du_festival
+    ulElement.appendChild(liElement)
+  //console.log(listvalue)
+      
+  } */
+
 /* list = [163, 73, 44, 25, 16, 11]
 function anglesCamembert(total, valeurs) {
   valeurs.forEach(element => {
@@ -75,7 +107,7 @@ function isDisciplineDominante(list) {
 
 }
 
-function festivals() {
+/* function festivals() {
   tailleList = []
   let ulElement = document.querySelector("dd")
   fetch("https://data.culture.gouv.fr/api/explore/v2.1/catalog/datasets/festivals-global-festivals-_-pl/exports/json").then((response) => {
@@ -99,7 +131,7 @@ function festivals() {
     //console.log(tailleList)
   });
 
-}
+} */
 
 function createMap() {
   window.onload = function () {

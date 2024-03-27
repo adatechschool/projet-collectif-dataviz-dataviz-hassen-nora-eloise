@@ -2,8 +2,9 @@
   body{
     margin: 0;
     padding: 0;
+    position: relative;
     font-family: "Poppins", sans-serif;
-    background-color: rgb(3, 9, 97);
+    /* background-color: rgb(3, 9, 97); */
     color: white ; 
   }
   
@@ -134,11 +135,14 @@
 
    }
 
-   .typesOfFestivals{
-      width: 80%;
+   .map{
+      width: 100%;
       margin: auto;
       text-align: centre;
       padding-top: 100px;
+      background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)),url(img/istockphoto-813622440-1024x1024.jpg);
+      background-position: center;
+      background-size: cover;
    }
    h1{
       font-size: 36px;
@@ -182,15 +186,23 @@
     }
 
     .footer{
-       width: 100%;
-       text-align:center;
-       padding: 30px 0;
+      width: 100%;
+      text-align:center;
+      padding: 30px 0;
+      color: white;
+      background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)),url(img/istockphoto-1080309824-1024x1024.jpg);
+      background-position: center;
+      background-size: cover;
     }
 
     .footer h4{
        margin-bottom: 25px;
        margin-top: 20px;
        font-weight: 600;
+       color: white;
+    }
+    .footer p{
+      color: white;
     }
   canvas{
       display: block;
@@ -209,8 +221,21 @@
       margin: auto;
   }
   #myDoughnutChart{ 
-    width: 40%; 
+    width: 60%; 
     height: 300 px;
+    
+}
+.donut{
+  background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)),url(img/istockphoto-1354130292-1024x1024.jpg);
+      background-position: center;
+      background-size: cover;
+}
+
+.blanc{
+  background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)),url(img/istockphoto-1353646587-1024x1024.jpg);
+  background-position: center;
+  background-size: cover;
+
 }
 
 
