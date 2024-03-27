@@ -3,7 +3,7 @@ function festivalsPaysLoire() {
   fetch("https://data.culture.gouv.fr/api/explore/v2.1/catalog/datasets/festivals-global-festivals-_-pl/exports/json").then((response) => {
     return response.json()
   }).then((festivals) => {
-    console.log(festivals)
+    //console.log(festivals)
     for (let festival of festivals.results) {
       let liElement = document.createElement("li")
       liElement.innerText = festival.nom_du_festival
@@ -15,7 +15,6 @@ function festivalsPaysLoire() {
 
 function festivalsLoireAtlantique() {
   const trElement = document.querySelector("tr")
-  const tr2Element2 = document.createElement("tr")
   fetch("https://data.culture.gouv.fr/api/explore/v2.1/catalog/datasets/festivals-global-festivals-_-pl/exports/json").then((response) => {
     return response.json()
   }).then((festivals) => {
@@ -30,51 +29,77 @@ function festivalsLoireAtlantique() {
     }
   })
 }
-
 function festivalsParCatégories() {
-  //tailleList = []
-  //const ulElement = document.querySelector("ul")
   fetch("https://data.culture.gouv.fr/api/explore/v2.1/catalog/datasets/festivals-global-festivals-_-pl/exports/json").then((response) => {
     return response.json()
   }).then((festivals) => { //festivals contient 7283 objets festival
     festFilter = festivals.filter(isPaysdeLaLoire) // contient 332 objets festival en pays de la loire
-    //musicFilter=festFilter.filter(isMusic) // 163 festival de musique du pays de la loire
-    let listbytheme = isDisciplineDominante(festFilter)
-    console.log(listbytheme)
-    //tailleList=musicFilter.length //taille de la liste des festival de musique du pays de la loire
-    /* for (let festival of {listbytheme}){ //affiche chacun d'eux avec 
-     const liElement=document.createElement("li")
-     liElement.innerText=festival.key //leur nom
-     liElement.innerText+=" || " +festival.value // leur thème
-     ulElement.appendChild(liElement) //affiche chaque ligne entre les balises ul de la page index
-  } */
+    let listbytheme = isDisciplineDominante(festFilter) // liste des festivals par types {[discipline, list],}
     //console.log(listbytheme)
-    return listbytheme // nombre de festival de musique du pays de la loire
+    let list=[]
+    for([key, value] of Object.entries(listbytheme)){
+      let obj={}
+      obj[key]= value.length
+      list.push( obj) // liste des disciplines avec le nombre de festivals correspondant 
+  }
+  //console.log(list)
+DoughnutChart(list)// appel du piechart
   })
-
 }
+function festivalsListParCategories() {
+  fetch("https://data.culture.gouv.fr/api/explore/v2.1/catalog/datasets/festivals-global-festivals-_-pl/exports/json").then((response) => {
+    return response.json()
+  }).then((festivals) => { //festivals contient 7283 objets festival
+    festFilter = festivals.filter(isPaysdeLaLoire) // contient 332 objets festival en pays de la loire
+    let listbytheme = isDisciplineDominante(festFilter) // liste des festivals par types {[discipline, list],}
+    //console.log(listbytheme)
+  //console.log(listbytheme)
+  let list=[]
+    for([key, value] of Object.entries(festFilter)){
+      let obj={}
+      obj[key]= value
+      list.push( obj) // liste des disciplines avec le nombre de festivals correspondant 
+  }
+  //console.log(list)
+  affichageLists(list) 
+  })
+}
+/* function affichageLists(list) {
+  let listvalue=[]
+  let ulElement = document.querySelector("dd")
+  for(value of list){
+    listvalue.push(Object.values(value).join()) // liste 
+    //liElement.innerText += " || " + festival.discipline_dominante
+  }
+  console.log(`${listvalue}`)
+  let liElement = document.createElement("li")
+    liElement.innerText = listvalue.nom_du_festival
+    ulElement.appendChild(liElement)
+  //console.log(listvalue)
+      
+  } */
 
-list = [163, 73, 44, 25, 16, 11]
+/* list = [163, 73, 44, 25, 16, 11]
 function anglesCamembert(total, valeurs) {
   valeurs.forEach(element => {
     pourcentage = (100 * element) / total
     angle = (360 * pourcentage) / 100
     console.log(pourcentage, angle)
   });
-}
+} */
 
 function isPaysdeLaLoire(list) {
 
   return list.region_principale_de_deroulement === "Pays de la Loire"
 }
 
-function isMusic(list) {
+/* function isMusic(list) {
   return list.discipline_dominante === "Musique"
 }
 function isLivres(list) {
   return list.discipline_dominante === "Livre, littérature"
 }
-
+ */
 function isDisciplineDominante(list) {
   let listGroupDiscipline = Object.groupBy(list, ({ discipline_dominante }) => discipline_dominante);
   //console.log(listGroupDiscipline)
@@ -82,35 +107,7 @@ function isDisciplineDominante(list) {
 
 }
 
-/* function affichagePopMap() {
-  listObjet = []
-  fetch("https://data.culture.gouv.fr/api/explore/v2.1/catalog/datasets/festivals-global-festivals-_-pl/exports/json").then((response) => {
-    return response.json()
-  }).then((festivals) => {
-    festFilter = festivals.filter(isPaysdeLaLoire) // contient 332 objets festival en pays de la loire
-
-  })
-  //console.log(listObjet)
-  return listObjet
-} 
-  let trElement = document.querySelector("tr")
-  let tr2Element2 = document.createElement("tr")
-  fetch("https://data.culture.gouv.fr/api/explore/v2.1/catalog/datasets/festivals-global-festivals-_-pl/records?limit=100&refine=departement_principal_de_deroulement%3ALoire-Atlantique&refine=region_principale_de_deroulement%3A%22Pays%20de%20la%20Loire%22").then((response) => {
-    return response.json()
-  }).then((festivals) => {
-    console.log(festivals)
-    for (let festival of festivals.results) {
-      let thElement = document.createElement("li")
-
-      thElement.innerText = festival.nom_du_festival
-      liElement2.innerText = festival.
-        trElement.appendChild(liElement)
-      trElement.appendChild(liElement2)
-    }
-  })
-*/
-
-function festivals() {
+/* function festivals() {
   tailleList = []
   let ulElement = document.querySelector("dd")
   fetch("https://data.culture.gouv.fr/api/explore/v2.1/catalog/datasets/festivals-global-festivals-_-pl/exports/json").then((response) => {
@@ -134,7 +131,7 @@ function festivals() {
     //console.log(tailleList)
   });
 
-}
+} */
 
 function createMap() {
   window.onload = function () {
@@ -166,65 +163,36 @@ function createMap() {
       subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
     });
 
-    let googleTransport = L.tileLayer('http://{s}.tile.thunderforest.com/transport/{z}/{x}/{y}.png', {
-      maxZoom: 18,
-      subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
-    })
-
     // Ajouter les couches de tuiles à la carte
     googleStreets.addTo(map);
-
     L.control.layers({
       "Streets": googleStreets,
       "Satellites": googleSat,
       "Terrain": googleTerrain,
       "Traffic": googleTraffic,
-      "Transport": googleTransport, 
-      
     }).addTo(map);
-
     markersData(map)
-
   }
-
+}
+function createIcon(iconUrl) {
+  return L.icon({
+    iconUrl: iconUrl,
+    iconSize: [30, 30],
+    iconAnchor: [15, 30],
+    popupAnchor: [0, -30]
+  });
 }
 
 function markers(map, festivalLat, festivalLng, festivalNames, festivalCategory, festivalWebSites) {
   // Définir les icônes pour chaque catégorie
-  let iconMusic = L.icon({
-    iconUrl: "music-band.png",
-    iconSize: [30, 30],
-    iconAnchor: [15, 30],
-    popupAnchor: [0, -30]
-  });
-
-  let iconSpectacle = L.icon({
-    iconUrl: "theatre.png",
-    iconSize: [30, 30],
-    iconAnchor: [15, 30],
-    popupAnchor: [0, -30]
-  });
-
-  let iconLiterature = L.icon({
-    iconUrl: "livre-ouvert.png",
-    iconSize: [30, 30],
-    iconAnchor: [15, 30],
-    popupAnchor: [0, -30]
-  });
-
-  let iconDigitalArts = L.icon({
-    iconUrl: "dessin-numerique.png",
-    iconSize: [30, 30],
-    iconAnchor: [15, 30],
-    popupAnchor: [0, -30]
-  });
-
-  let iconAudioVisual = L.icon({
-    iconUrl: "television.png",
-    iconSize: [30, 30],
-    iconAnchor: [15, 30],
-    popupAnchor: [0, -30]
-  });
+  let iconMusic = createIcon("img/music-band.png");
+  let iconSpectacle = createIcon("img/theatre.png");
+  let iconLiterature = createIcon("img/livre-ouvert.png");
+  let iconDigitalArts = createIcon("img/dessin-numerique.png");
+  let iconAudioVisual = createIcon("img/television.png");
+  let iconPluridisciplinaire = createIcon("img/tente-evenementielle.png");
+  let defaultIcon = createIcon("img/espace-reserve.png");
+  let iconHellfest = createIcon("img/lemmy1.png");
 
   // Boucle pour créer les marqueurs en fonction de la catégorie
   for (let i = 0; i < festivalCategory.length; i++) {
@@ -232,7 +200,17 @@ function markers(map, festivalLat, festivalLng, festivalNames, festivalCategory,
     // Sélectionner l'icône en fonction de la catégorie
     switch (festivalCategory[i]) {
       case "Musique":
-        icon = iconMusic;
+        if (festivalNames[i] != "Hellfest Open Air"){
+          icon = iconMusic         
+        } else{
+             //Hellfest marcker
+          L.marker([47.09839244606988, -1.2655209162493293], { icon: iconHellfest }).addTo(map)
+          .bindPopup(
+          "<b>Nom :</b> " + "Hellfest Open Air" + "<br>" +
+          "<b>Catégorie :</b> " + "Rock MEtal" + "<br>" +
+          "<b>Site Web :</b> <a href='" + "www.Hellfest.fr"+ "' target='_blank'>" + "www.Hellfest.fr" + "</a>"
+        );
+        } 
         break;
       case "Spectacle vivant":
         icon = iconSpectacle;
@@ -240,16 +218,19 @@ function markers(map, festivalLat, festivalLng, festivalNames, festivalCategory,
       case "Livre, littérature":
         icon = iconLiterature;
         break;
-      case "Arts numériques":
+      case "Arts visuels, arts numériques":
         icon = iconDigitalArts;
         break;
-      case "Audiovisuel":
+      case "Cinéma, audiovisuel":
         icon = iconAudioVisual;
         break;
-      default:
-        icon = iconMusic; // Par défaut, utilisez l'icône de musique
+      case "Pluridisciplinaire":
+        icon = iconPluridisciplinaire ;
         break;
-    }
+      default:
+          icon = defaultIcon;
+        break;
+      }
     // Ajouter le marqueur avec l'icône correspondante
     L.marker([festivalLat[i], festivalLng[i]], { icon: icon }).addTo(map)
       .bindPopup(
@@ -257,14 +238,6 @@ function markers(map, festivalLat, festivalLng, festivalNames, festivalCategory,
         "<b>Catégorie :</b> " + festivalCategory[i] + "<br>" +
         "<b>Site Web :</b> <a href='" + festivalWebSites[i] + "' target='_blank'>" + festivalWebSites[i] + "</a>"
       );
-  // //L.marker([47.09675,-1.26776], { icon: customIcon }).addTo(map).bindPopup(festivalNames);
-  // for (let i = 0; i < festivalLat.length; i++) {
-  //   L.marker([festivalLat[i], festivalLng[i]], { icon: iconMusic }).addTo(map)
-  //   .bindPopup(
-  //     "<b>Nom :</b> " + festivalNames[i] + "<br>" + // Utilisation de <b> pour du texte en gras
-  //     "<b>Catégorie :</b> " + festivalCategory[i] + "<br>" + // Utilisation de <b> pour du texte en gras
-  //     "<b>Site Web :</b> <a href='" + festivalWebSites[i] + "' target='_blank'>" + festivalWebSites[i] + "</a>" // Création d'un lien avec une balise <a>
-  //   );
    }
 }
 function markersData(map) {
@@ -276,16 +249,11 @@ function markersData(map) {
   let festivalCategory = [];
   let festivalWebSites = [];
 
-  // récup API festivals Pays de la Loire, transformation des réponses en JSON et récupération des données dans des tableaux vides
-  // fetch("https://data.culture.gouv.fr/api/explore/v2.1/catalog/datasets/festivals-global-festivals-_-pl/records?limit=-1&refine=region_principale_de_deroulement%3A%22Pays%20de%20la%20Loire%22")
-  //   .then((resp) => resp.json())
-  //   .then(data => {
-    fetch("https://data.culture.gouv.fr/api/explore/v2.1/catalog/datasets/festivals-global-festivals-_-pl/exports/json").then((response) => {
+  fetch("https://data.culture.gouv.fr/api/explore/v2.1/catalog/datasets/festivals-global-festivals-_-pl/exports/json").then((response) => {
     return response.json()
   }).then((data)=> { //festivals contient 7283 objets festival
-    let festFilter = data.filter(isPaysdeLaLoire)
+    let festFilter = data.filter(isPaysdeLaLoire) //festFilter contient 332 objets festival dans le pays de la loire
    
-
     // boucles pour récupérer les coordonnées et noms des festivals + push des données dans les tableaux festivalsNames geocodageData  festivalLng festivalLat
       for (let i = 0; i < festFilter.length; i++) {
         let result = festFilter[i];
@@ -309,7 +277,6 @@ function markersData(map) {
       }
       for (let i = 0; i < festFilter.length; i++) {
         let result = festFilter[i];
-        festivalWebSites.push(result.site_internet_du_festival)
       }
       markers(map, festivalLat, festivalLng, festivalNames, festivalCategory, festivalWebSites)
     });
