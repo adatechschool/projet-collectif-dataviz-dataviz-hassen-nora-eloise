@@ -1,9 +1,10 @@
   
-  *{
+  body{
     margin: 0;
     padding: 0;
     font-family: "Poppins", sans-serif;
- 
+    background-color: rgb(3, 9, 97);
+    color:white;
   }
   
   .header{
@@ -186,34 +187,50 @@
        margin-bottom: 25px;
        margin-top: 20px;
        font-weight: 600;
+      
     }
-  canvas{
+
+    .footer p{
+      color:#fff
+    }
+  /* canvas{
       display: block;
       margin: auto;
       border: 1px solid #ccc;
       width: 400 px;
-      height:400 px;
+      height:400 px; 
 
+  }
+/*   @media(max-width: 700px){
+    canvas{
+      display: block;
+     
+      border: 1px solid #ccc;
+      width:  50px;
+      height:  70 px;
   } 
+} */
+
+ canvas{
+  display: block;
+ }
+
+   .wrapper{
+     overflow: hidden;
+     background-color: #000;
+   }
+
+    
  
   #map{
-      width: 60%;
+      width: 50%;
       height: 500px;
       border: none;
       border-radius: 20px;
-      text-align:center;
+      margin: auto;
   }
 
  
-
-
-  
- /*    body{
-     background-color: black;
-    color:white;
-    font-family: Arial, sans-serif;
-    
-  } */
 
 
   

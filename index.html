@@ -29,10 +29,9 @@
     <i class="fa fa-times" onclick="showMenu()"></i>
 
      <ul>
-        <li><a href="">HOME</a></li>
-        <li><a href="">FESTIVALS</a></li>
-        <li><a href="">BLOG</a></li>
-        <li><a href="">CONTACT</a></li>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="festival.html">FESTIVALS</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
      </ul>
   </div>
   <i class="fa fa-bars" onclick="hideMenu()"></i>
@@ -48,7 +47,7 @@
 
   <section class="typesOfFestivals">
      <h1>Types De Festivals</h1>
-     <p style="text-align: center;">Voici Les Cinq Diffrents Types Des Festivals </p>
+     <p style="text-align: center; color:white">Voici Les Cinq Diffrents Types Des Festivals </p>
   
      <div class="row">
      
@@ -72,7 +71,7 @@
   
     <br>
     <br>
-    <div id="map" style="width: 60%; height: 500px; border: none; border-radius: 20px; align-items: center" leaflet.js></div>
+    <div id="map" leaflet.js></div>
     <br>
     <br>
     <canvas id="myDoughnutChart" style="width: 30%; height: 300 px;"></canvas>
@@ -100,7 +99,7 @@
 
 <script>
 
-    /*  createMap() */
+     createMap() 
      DoughnutChart()
      festivalsPaysLoire()
      festivalsParCatégories()

@@ -10,9 +10,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
 
-    <script src="scripts.js"></script>
+    
     <script src="chart.js"></script>
-  
+    <script src="animationBG.js"></script>
     <script src="site.js"></script>
 
     <link rel="stylesheet" href="main.css">
@@ -20,17 +20,21 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css">
   </head>
 <body>
-  <section class="sub-header">
+  <div class="wrapper">
+    <canvas id="effects"></canvas>
+  </div>
+
+<section>
 <nav>
   <a href="index.html"><img src="image/logo.png"></a>
   <div class="nav-links" id="navLinks">
     <i class="fa fa-times" onclick="showMenu()"></i>
 
      <ul>
-        <li><a href="">HOME</a></li>
-        <li><a href="">FESTIVALS</a></li>
-        <li><a href="">BLOG</a></li>
-        <li><a href="">CONTACT</a></li>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="festival.html">FESTIVALS</a></li>
+       
+        <li><a href="contact.html">CONTACT</a></li>
      </ul>
   </div>
   <i class="fa fa-bars" onclick="hideMenu()"></i>
@@ -136,7 +140,7 @@ pluridisciplinaire invite chacun à découvrir, à partager et à célébrer la 
 
 <script>
 
-   
+
      nav()
 </script>
 
