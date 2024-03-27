@@ -174,61 +174,43 @@ function createMap() {
     markersData(map)
   }
 }
+function createIcon(iconUrl) {
+  return L.icon({
+    iconUrl: iconUrl,
+    iconSize: [30, 30],
+    iconAnchor: [15, 30],
+    popupAnchor: [0, -30]
+  });
+}
+
 function markers(map, festivalLat, festivalLng, festivalNames, festivalCategory, festivalWebSites) {
   // Définir les icônes pour chaque catégorie
-  let iconMusic = L.icon({
-    iconUrl: "img/music-band.png",
-    iconSize: [30, 30],
-    iconAnchor: [15, 30],
-    popupAnchor: [0, -30]
-  });
+  let iconMusic = createIcon("img/music-band.png");
+  let iconSpectacle = createIcon("img/theatre.png");
+  let iconLiterature = createIcon("img/livre-ouvert.png");
+  let iconDigitalArts = createIcon("img/dessin-numerique.png");
+  let iconAudioVisual = createIcon("img/television.png");
+  let iconPluridisciplinaire = createIcon("img/tente-evenementielle.png");
+  let defaultIcon = createIcon("img/espace-reserve.png");
+  let iconHellfest = createIcon("img/lemmy1.png");
 
-  let iconSpectacle = L.icon({
-    iconUrl: "img/theatre.png",
-    iconSize: [30, 30],
-    iconAnchor: [15, 30],
-    popupAnchor: [0, -30]
-  });
-
-  let iconLiterature = L.icon({
-    iconUrl: "img/livre-ouvert.png",
-    iconSize: [30, 30],
-    iconAnchor: [15, 30],
-    popupAnchor: [0, -30]
-  });
-
-  let iconDigitalArts = L.icon({
-    iconUrl: "img/dessin-numerique.png",
-    iconSize: [30, 30],
-    iconAnchor: [15, 30],
-    popupAnchor: [0, -30]
-  });
-
-  let iconAudioVisual = L.icon({
-    iconUrl: "img/television.png",
-    iconSize: [30, 30],
-    iconAnchor: [15, 30],
-    popupAnchor: [0, -30]
-  });
-  let iconPluridisciplinaire = L.icon({
-    iconUrl: "img/tente-evenementielle.png",
-    iconSize: [30, 30],
-    iconAnchor: [15, 30],
-    popupAnchor: [0, -30]
-  });
-  let defaultIcon = L.icon({
-    iconUrl: "img/espace-reserve.png",
-    iconSize: [30, 30],
-    iconAnchor: [15, 30],
-    popupAnchor: [0, -30]
-  });
   // Boucle pour créer les marqueurs en fonction de la catégorie
   for (let i = 0; i < festivalCategory.length; i++) {
     let icon;
     // Sélectionner l'icône en fonction de la catégorie
     switch (festivalCategory[i]) {
       case "Musique":
-        icon = iconMusic;
+        if (festivalNames[i] != "Hellfest Open Air"){
+          icon = iconMusic         
+        } else{
+             //Hellfest marcker
+          L.marker([47.09839244606988, -1.2655209162493293], { icon: iconHellfest }).addTo(map)
+          .bindPopup(
+          "<b>Nom :</b> " + "Hellfest Open Air" + "<br>" +
+          "<b>Catégorie :</b> " + "Rock MEtal" + "<br>" +
+          "<b>Site Web :</b> <a href='" + "www.Hellfest.fr"+ "' target='_blank'>" + "www.Hellfest.fr" + "</a>"
+        );
+        } 
         break;
       case "Spectacle vivant":
         icon = iconSpectacle;
@@ -272,7 +254,6 @@ function markersData(map) {
   }).then((data)=> { //festivals contient 7283 objets festival
     let festFilter = data.filter(isPaysdeLaLoire) //festFilter contient 332 objets festival dans le pays de la loire
    
-
     // boucles pour récupérer les coordonnées et noms des festivals + push des données dans les tableaux festivalsNames geocodageData  festivalLng festivalLat
       for (let i = 0; i < festFilter.length; i++) {
         let result = festFilter[i];
@@ -296,12 +277,6 @@ function markersData(map) {
       }
       for (let i = 0; i < festFilter.length; i++) {
         let result = festFilter[i];
-        
-        if (result == null){
-          festivalWebSites.push("Pas de site web connu")
-        }else{
-          festivalWebSites.push(result.site_internet_du_festival)
-        }
       }
       markers(map, festivalLat, festivalLng, festivalNames, festivalCategory, festivalWebSites)
     });
