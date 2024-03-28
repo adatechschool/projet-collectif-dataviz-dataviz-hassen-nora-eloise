@@ -123,30 +123,6 @@ nav-links{
  }
  
 
- @media(max-width: 700px){
-  .text-box h1{
-    font-size: 20px;
-  }
-  .nav-links ul li{
-    display: block;
-  }
-  .nav-links {
-    position: absolute;
-    background: #81037b;
-    height: 100vh;
-    width: 200px;
-    top: 0;
-    right: -200px;
-    text-align: left;
-    z-index: 2;
-    transition: 1s; 
-  }
-  
-  .nav-links ul{
-    padding: 30px;
-  }
-
- }
 
    .map{
       width: 100%;
@@ -215,11 +191,7 @@ nav-links{
     box-shadow: 0 0 20px 0px rgba(0,0,0,0.2);
 
  }
-  @media (max-width:700px) {
-   .row{
-    flex-direction:column;
-   }
-  }
+  
 
     .footer{
       width: 100%;
@@ -288,19 +260,6 @@ nav-links{
 nav .menuIcon, .closeIcon{
   display: none;
 }
-
-@media (max-width: 700px) {
-
-  .menuIcon{
-    display: none;
-  }
-
-
-  .closeIcon{
-    display: block;
-  }
-}
-
 
 h2{
 text-align: center;
