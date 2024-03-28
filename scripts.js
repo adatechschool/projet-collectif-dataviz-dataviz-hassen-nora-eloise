@@ -35,14 +35,12 @@ function festivalsParCatégories() {
   }).then((festivals) => { //festivals contient 7283 objets festival
     festFilter = festivals.filter(isPaysdeLaLoire) // contient 332 objets festival en pays de la loire
     let listbytheme = isDisciplineDominante(festFilter) // liste des festivals par types {[discipline, list],}
-    //console.log(listbytheme)
     let list=[]
     for([key, value] of Object.entries(listbytheme)){
       let obj={}
       obj[key]= value.length
       list.push( obj) // liste des disciplines avec le nombre de festivals correspondant 
   }
-  //console.log(list)
 DoughnutChart(list)// appel du piechart
   })
 }

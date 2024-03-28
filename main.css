@@ -1,17 +1,11 @@
 body{
   margin: 0;
   padding: 0;
+  position: relative;
   font-family: "Poppins", sans-serif;
-  background-color: rgb(12, 22, 107);
-  color:white;
-}
-
-.body2{
-  margin: 0;
-  padding: 0;
-  font-family: "Poppins", sans-serif;
-  background-color: rgb(12, 22, 107);
-  color:white; 
+  background-color: rgb(3, 9, 97);
+  /* background-color: rgb(3, 9, 97); */
+  color: white ; 
 }
 
 .header{
@@ -22,54 +16,32 @@ body{
   background-size: cover;
   position: relative;
 }
-
-.header2{
-  min-height: 100vh;
-  width: 100%;
-  background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)),url(image/people.jpg);
-  background-position: center;
-  background-size: cover;
-  position: relative;
-}
-
-
-.paragraph1{
-  color:#fff;
-  text-align: center;
-  font-size: 36px;
-  font-weight: 600;
-}
 nav{
  display: flex;
  padding: 2% 6%;
  justify-content: space-between;
- align-items:center;
+ align-items: center;
 }
-
 nav img{
   width: 150px;
 }
-
 nav-links{
+  color: #fff;
   flex:1;
   text-align: right;
 }
-
 .nav-links ul li {
+  color: #fff;
   list-style: none;
   display:inline-block;
   padding: 8px 12px;
   position: relative;
-
 }
-
 .nav-links ul li a{
   color: #fff;
   text-decoration: none;
   font-size: 13px;
-
 }
-
 .nav-links ul li::after{
   content: '';
   width:0%;
@@ -78,13 +50,13 @@ nav-links{
   display: block;
   margin: auto;
   transition: 0.5s;
-
+  color: #fff;
 }
 
 .nav-links ul li:hover::after{
+  color: #fff;
    width:100%;
  }
-
   .text-box{
    width: 90%;
    color: #fff;
@@ -97,7 +69,6 @@ nav-links{
  .text-box h1{
    font-size: 62px;
  }
-
  .text-box p{
    margin: 10px 0 40px;
    font-size: 14px;
@@ -115,14 +86,15 @@ nav-links{
     position: relative;
     cursor: pointer;
  }
-
  .text-btn:hover{
     border: 1px solid #e004d5;
     background: #e004d5;
     transition: 1s;
  }
  
-
+  nav .fa{
+  display:none
+ }
  @media(max-width: 700px){
   .text-box h1{
     font-size: 20px;
@@ -141,49 +113,33 @@ nav-links{
     z-index: 2;
     transition: 1s; 
   }
-  
+  nav .fa{
+    display: block;
+    color:#fff;
+    margin: 10px;
+    font-size: 22px;
+    cursor: pointer;
+  }
   .nav-links ul{
     padding: 30px;
   }
 
  }
 
-   .map{
-      width: 100%;
-      margin: auto;
-      text-align: centre;
-      padding-top: 100px;
-      background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)),url(img/istockphoto-813622440-1024x1024.jpg);
-      background-position: center;
-      background-size: cover;
-   }
-   h1{
-      font-size: 36px;
-      font-weight: 600;
-      text-align: center;
-   }
-   p{
-      color: black;
-      font-size: 14px;
-      padding: 10px;
-   }
-   .row{
-      margin-top: 5%;
-      display: flex;
-      justify-content: space-between;
-      
-   }
- .typesOfFestivals{
-    width: 80%;
+ 
+ .map{
+    width: 100%;
     margin: auto;
-    text-align: centre;
+    text-align: center;
     padding-top: 100px;
+    background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)),url(img/istockphoto-813622440-1024x1024.jpg);
+    background-position: center;
+    background-size: cover;
  }
  h1{
     font-size: 36px;
     font-weight: 600;
     text-align: center;
-    color:#e004d5
  }
  p{
     color: black;
@@ -196,8 +152,6 @@ nav-links{
     justify-content: space-between;
     
  }
-
-
  h3{
     text-align: center;
     font-weight: 600;
@@ -210,10 +164,8 @@ nav-links{
     box-sizing: border-box;
     transition: 0.5;
  }
-
  h3:hover{
     box-shadow: 0 0 20px 0px rgba(0,0,0,0.2);
-
  }
   @media (max-width:700px) {
    .row{
@@ -221,114 +173,87 @@ nav-links{
    }
   }
 
-    .footer{
-      width: 100%;
-      text-align:center;
-      padding: 30px 0;
-      color: white;
-      background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)),url(img/istockphoto-1080309824-1024x1024.jpg);
-      background-position: center;
-      background-size: cover;
-    }
   .footer{
      width: 100%;
      text-align:center;
      padding: 30px 0;
+    width: 100%;
+    text-align:center;
+    padding: 30px 0;
+    color: white;
+    background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)),url(img/istockphoto-1080309824-1024x1024.jpg);
+    background-position: center;
+    background-size: cover;
   }
 
-    .footer h4{
-       margin-bottom: 25px;
-       margin-top: 20px;
-       font-weight: 600;
-       color: white;
-    }
-    .footer p{
-      color: white;
-    }
- 
   .footer h4{
      margin-bottom: 25px;
      margin-top: 20px;
      font-weight: 600;
-     color:#e004d5
-    
+     color: white;
   }
-
   .footer p{
-    color:#fff
+    color: white;
   }
-
-  .footerImg{
-    width: 50px;
-    height: 50px;
-    align-items: center;
-  }
- 
-
- .menuIcon, .closeIcon{
-  position: absolute;
-  top: 20px;
-  cursor: pointer;
-  font-size: 24px;
-  z-index: 9999;
-  color: #000; 
+canvas{
+    display: block;
+    margin: auto;
+    border: 1px solid #ccc;
+    width: 400 px;
+    height:400 px;
 } 
 
-
-.menuIcon {
-  display: block; 
-  right: 20px;
+#map{
+    width: 80%;
+    height: 700px;
+    border: none;
+    border-radius: 20px;
+    margin: auto;
 }
 
-
-.closeIcon {
-  display: none; 
-  right: 20px; 
-}  
-nav .menuIcon, .closeIcon{
-  display: none;
-}
-
-@media (max-width: 700px) {
-
-  .menuIcon{
-    display: none;
-  }
-
-
-  .closeIcon{
-    display: block;
-  }
-}
-
-
-h2{
-text-align: center;
-color:#e004d5
-}
-
-.p2{
-  text-align: center;
-  color:#fff;
-  border:#f38dee solid  10px;
-  border-radius: 5px;
+.map a{
+  margin : 0 auto;
+ 
   
 }
 
-#map{
-  width: 50%;
-  height: 500px;
-  border: none;
-  border-radius: 20px;
-   margin: auto;
+.map img{
+  width: 40px;
+  height: auto;
+  
 }
 
 
-canvas{
+#myDoughnutChart{ 
+  width: 40%; 
+  height: 300 px;
+
+}
+.donut{
+background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)),url(img/istockphoto-1354130292-1024x1024.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.donut a{
   display: block;
-  margin: auto;
-  border: 1px solid #ccc;
-  width: 400 px;
-  height:400 px; 
+  text-align: center;
+ }
+
+.donut h2{
+  margin : 0 auto;
+  
+}
+
+.donut img{
+  width: 40px;
+  height: auto;
+  
+}
+
+.blanc{
+background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)),url(img/istockphoto-1353646587-1024x1024.jpg);
+background-position: center;
+background-size: cover;
 
 }

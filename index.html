@@ -11,7 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="scripts.js"></script>
     <script src="chart.js"></script>
-    <script src="site.js"></script>
+    <!-- <script src="site.js"></script> -->
     <link rel="stylesheet" href="main.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,500;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css">
@@ -27,15 +27,15 @@
 <nav>
   <a href="index.html"><img src="image/logo.png"></a>
   <div class="nav-links" id="navLinks">
-    <i class="fa fa-times" onclick="showMenu()"></i>
+   <!--  <i class="fa fa-times" onclick="showMenu()"></i> -->
      <ul>
         <li><a href="">HOME</a></li>
-        <li><a href="">FESTIVALS</a></li>
-        <li><a href=" #myDoughnutChart">CHART</a></li>
-        <li><a href="#map">MAP</a></li>
+        <!-- <li><a href="">FESTIVALS</a></li> -->
+        <li><a href=" #ancredonut">CHART</a></li>
+        <li><a href="#ancremap">MAP</a></li>
      </ul>
   </div>
-  <i class="fa fa-bars" onclick="hideMenu()"></i>
+ <!--  <i class="fa fa-bars" onclick="hideMenu()"></i> -->
 </nav>
 <div class="text-box">
    <h1> VIBREZ PRÈS DE CHEZ VOUS</h1>
@@ -64,28 +64,52 @@
     <div style = "text-align: center; align-items: center;">
   </section> -->
   <section class="map">
+    <div id="ancremap"></div>
     <h1>Festivals Pays de la Loire</h1>
     <br>
     <br>
     <div id="map" leaflet.js></div>
+    
+    <br><br>
+    <a href=""><img src="img/fleche-haut-2.png"></a>
+    <br><br>
+    <br><br>
+    <br>
+    <br><br>
+    
+    <br>
+    <br>
+    <br><br>
+    <br><br>
+    <br>
     <br>
     <br>
   </section>
   <section class="donut">
+    <div id="ancredonut"></div>
+    <br>
+    <br>
+     <h1 style="text-align: center;"> TYPE DE FESTIVAL EN DÉTAIL</h1>
+     <br>
+     <br>
     <canvas id="myDoughnutChart"></canvas>
-
+    <br>
+    <br>
+    <br>
+    <br>
+    <a href="" ><img src="img/fleche-haut-2.png" ></a>
      </section>
      <section class="blanc">
     <ul></ul>
     <script>
         festivalsParCatégories()
         createMap()
-        nav()
+       /*  nav() */
         //festivalsListParCategories()
     </script>
     <br>
     <br>
-    <!-- <h2> TYPE DE FESTIVAL EN DÉTAIL</h2> -->
+   
     <br>
     <br>
     
@@ -94,14 +118,15 @@
   </section>
     <section class="footer">
      <h4>À PROPOS DE NOUS</h4>
-     <p>Nous sommes une organisation dédiée à promouvoir et à célébrer, la musique l'art et la culture,<br>
-       rassemblant des talents diversifiés pour offrir des expériences uniques au cœur des Pays de la Loire.</p>
+     <p>"HANOEL" => HASSEN, NORA, ELOISE, Nous sommes trois personnes dynamiques, on à fait ce project, avec plein de stress,<br>
+      de blocages sur git et malgré le mal être d'Éloïse au départ, on s'est bien marré.</p>
+     
+     <br>
+     
+      <H1>MADE IN ADA TECH SCHOOL</H1>
+      
     </section>
 </div>
-
-
-
-
-    
+   
 </body>
 </html>
