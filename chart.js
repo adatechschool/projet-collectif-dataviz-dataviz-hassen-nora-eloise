@@ -1,16 +1,13 @@
  
 
   function DoughnutChart(list){
-    //console.log(list)
+
     let listkey=[]
     let listvalue=[]
     for(element of list){
-       //console.log(Object.keys(element))
         listkey.push(Object.keys(element).join()) //liste des disciplines
         listvalue.push(Object.values(element).join()) // liste des valeurs correspondantes
       }
-      /* console.log(listkey)
-      console.log(listvalue) */
   let  ctx = document.getElementById('myDoughnutChart').getContext('2d')
   let  myDoughnutChart = new Chart(ctx, {
       type: 'doughnut',
