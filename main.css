@@ -6,24 +6,7 @@ body{
   color:white;
 }
 
-.body2{
-  margin: 0;
-  padding: 0;
-  font-family: "Poppins", sans-serif;
-  background-color: rgb(12, 22, 107);
-  color:white; 
-}
-
 .header{
-  min-height: 100vh;
-  width: 100%;
-  background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)),url(image/people.jpg);
-  background-position: center;
-  background-size: cover;
-  position: relative;
-}
-
-.header2{
   min-height: 100vh;
   width: 100%;
   background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)),url(image/people.jpg);
@@ -237,29 +220,6 @@ nav-links{
   }
  
 
- .menuIcon, .closeIcon{
-  position: absolute;
-  top: 20px;
-  cursor: pointer;
-  font-size: 24px;
-  z-index: 9999;
-  color: #000; 
-} 
-
-
-.menuIcon {
-  display: block; 
-  right: 20px;
-}
-
-
-.closeIcon {
-  display: none; 
-  right: 20px; 
-}  
-nav .menuIcon, .closeIcon{
-  display: none;
-}
 
 h2{
 text-align: center;
